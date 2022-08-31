@@ -1,14 +1,12 @@
 import 'package:aad_oauth/helper/choose_oauth.dart'
-    // ignore: uri_does_not_exist
     if (dart.library.io) 'package:aad_oauth/helper/mobile_oauth.dart'
-    // ignore: uri_does_not_exist
     if (dart.library.html) 'package:aad_oauth/helper/web_oauth.dart';
 
 import 'package:aad_oauth/model/config.dart';
 import 'package:flutter/widgets.dart';
 
 class CoreOAuth {
-  CoreOAuth();
+  const CoreOAuth();
 
   void setWebViewScreenSize(Rect screenSize) {}
 
@@ -22,6 +20,8 @@ class CoreOAuth {
 
   Future<String?> getIdToken() async => 'ID_TOKEN';
 
+  Future<bool> isLogged() async => false;
+
   factory CoreOAuth.fromConfig(Config config) =>
-      config.isStub ? CoreOAuth() : getOAuthConfig(config);
+      config.isStub ? const CoreOAuth() : getOAuthConfig(config);
 }
