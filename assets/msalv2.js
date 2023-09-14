@@ -52,8 +52,9 @@ var aadOauth = (function () {
         onSuccess();
 
         return;
-      } catch {
+      } catch (error) {
         // Swallow errors and continue to interactive login
+        console.error(error);
       }
     }
 
@@ -68,6 +69,7 @@ var aadOauth = (function () {
 
       onSuccess();
     } catch (error) {
+      console.error(error);
       // rethrow
       onError(error);
     }
